@@ -9,7 +9,7 @@ const db = mysql.createConnection(
     {
         host: 'localhost',
 
-        user: 'brandonjlambrecht@gmail.com',
+        user: 'root',
 
         password: 'rootroot',
         database: 'employee_db'
@@ -18,71 +18,94 @@ const db = mysql.createConnection(
 );
 
 
-const questionArr = [
+const toDoQuestion = [
     {
-        type: 'list ',
+        type: 'list',
         name: 'init',
         choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
         message: 'What would you like to do?',
-    },
+    }]
+
+const addDepartment = [
     {
         type: 'input',
-        name: 'department',
+        name: 'add-department',
         message: 'What is the name of the department?',
-    },
+    }]
+
+const addRole = [
     {
         type: 'input',
-        name: 'role',
+        name: 'add-role',
         message: 'What is the name of the role?',
-    },
+    }]
+
+const salary = [
     {
         type: 'input',
         name: 'salary',
         message: 'What is the salary of the role?',
-    },
-    {
-        type: 'list',
-        name: 'department-role',
-        choices: ['Engineering', 'Finance', 'Legal', 'Sales', 'Service'],
-        message: 'Which department does the role belong to?',
-    },
-    {
-        type: 'list',
-        name: 'license',
-        choices: ['MIT', 'GPL', 'APACHE', 'BSD', 'NONE'],
-        message: 'What kind of license should your project have?',
-    },
-    {
-        type: 'input',
-        name: 'install',
-        default: 'npm i',
-        message: 'What command should be run to install dependencies?',
-    },
-    {
-        type: 'input',
-        name: 'test',
-        default: 'npm test',
-        message: 'What command should be run to run test?',
-    },
-    {
-        type: 'input',
-        name: 'contribute',
-        message: 'What does user need to know about contributing to repo?',
-    },
-];
+    }]
+
 
 const promptUser = async () => {
     try {
 
-        const userResponseObj = await inquirer.prompt(questionArr);
-        console.log(onsole.log('Welcome to employee tracker'));
+        const userResponseObj = await inquirer.prompt(toDoQuestion);
+        console.log('Welcome to employee tracker');
 
-        promptUser(userResponseObj)
+        if (userResponseObj.init === 'View All Employees') {
+            db.query('SELECT * FROM employee', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'Add Employee') {
+            db.query('SELECT id FROM employee', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'Update Employee Role') {
+            db.query('SELECT * FROM role', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'View All Roles') {
+            db.query('SELECT * FROM role', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'Add Role') {
+            db.query('SELECT * FROM role', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'View All Departments') {
+            db.query('SELECT * FROM department', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+        else if (userResponseObj.init === 'Add Department') {
+            db.query('SELECT * FROM department', (err, data) => {
+                console.table(data)
+                promptUser(userResponseObj)
+            })
+        }
+
+
+
     } catch (err) {
         console.log(err);
     }
 
 };
+
+promptUser();
 
 
 
