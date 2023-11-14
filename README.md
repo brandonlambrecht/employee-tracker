@@ -5,6 +5,12 @@
   ## Description
   
   The employee tracker is a command line application using mySQL and inquirer to view employees, roles, and departments within an organization. The application gives the ability to add and update information,adding any changes to the employee_db database.
+
+
+
+  Follow link for GitHub repository [Employee tracker](https://github.com/brandonlambrecht/employee-tracker)
+
+
   ## License
   
   None
@@ -45,5 +51,6 @@
   If you have any questions about the repo, open an issue or contact me at blamb_22@hotmail.com. You can find more of my work at  [brandonlambrecht](https//github.com/brandonlambrecht/).
     
   ## Demo
-  Link here for [demo](https://drive.google.com/file/d/1G_gwPcVcBd94Gj-bB-i3ytAHLS0CTnsK/view)
+  Link here for [demo](https://drive.google.com/file/d/1G_gwPcVcBd94Gj-bB-i3ytAHLS0CTnsK/view) on how to use application.
+   Image![Employee tracker](./images/screenshot%20.png)
  
