@@ -136,7 +136,7 @@ const addRole = function () {
             {
                 type: 'input',
                 name: 'roleName',
-                message: 'Enter the name of the role:'
+                message: 'Enter name of the role:'
             },
             {
                 type: 'input',
